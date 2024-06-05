@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app {
+  @apply relative w-full h-screen bg-gray-100;
+}
+
+.character {
+  @apply absolute cursor-pointer;
+}
+
+.day-night-cycle {
+  @apply fixed top-0 left-0 p-4 bg-gray-900 text-white;
+}
+
+.inventory {
+  @apply fixed bottom-0 left-0 p-4 bg-gray-900 text-white;
+}
+
+.place-of-interest {
+  @apply absolute bg-green-200 p-2 rounded;
+}
+
+.timer {
+  @apply p-2 bg-blue-200 rounded;
+}
