@@ -3,25 +3,45 @@
 @tailwind utilities;
 
 .app {
-  @apply relative w-full h-screen bg-gray-100;
+  @apply relative w-full h-screen bg-gray-100 flex justify-center items-center;
+}
+
+.game-container {
+  @apply flex justify-center items-center;
+}
+
+.game-content {
+  @apply relative bg-gray-100;
 }
 
 .character {
-  @apply absolute cursor-pointer;
+  @apply w-16 h-16 absolute cursor-pointer z-30;
 }
 
 .day-night-cycle {
-  @apply fixed top-0 left-0 p-4 bg-gray-900 text-white;
+  @apply fixed top-4 left-4 p-2 bg-gray-900 text-white rounded shadow-lg z-50;
 }
 
 .inventory {
-  @apply fixed bottom-0 left-0 p-4 bg-gray-900 text-white;
+  @apply fixed bottom-4 left-4 p-4 bg-gray-900 text-white rounded shadow-lg z-40;
 }
 
 .place-of-interest {
-  @apply absolute bg-green-200 p-2 rounded;
+  @apply absolute p-4 bg-green-200 rounded shadow-lg z-20;
 }
 
 .timer {
-  @apply p-2 bg-blue-200 rounded;
+  @apply p-2 bg-blue-200 rounded z-10;
+}
+
+.market {
+  @apply absolute bottom-4 right-4 p-4 bg-gray-900 text-white rounded shadow-lg z-30;
+}
+
+.player-stats {
+  @apply fixed top-4 right-4 bg-gray-900 text-white p-4 rounded shadow-lg z-40;
+}
+
+.field {
+  @apply absolute p-4 bg-green-200 rounded shadow-lg z-20;
 }

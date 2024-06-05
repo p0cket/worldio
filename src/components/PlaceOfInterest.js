@@ -2,21 +2,27 @@ import React, { useContext, useState } from 'react';
 import { GameContext } from '../contexts/GameContext';
 import Timer from './Timer';
 
-const PlaceOfInterest = ({ position, resource }) => {
-  const [isPlanted, setIsPlanted] = useState(false);
+const PlaceOfInterest = ({ position, resource, type }) => {
+  const [isInteracted, setIsInteracted] = useState(false);
   const { addItemToInventory } = useContext(GameContext);
 
-  const handleHarvest = () => {
-    addItemToInventory(resource);
-    setIsPlanted(false);
+  const handleInteraction = () => {
+    if (type === 'Plant') {
+      setIsInteracted(true);
+    } else if (type === 'Harvest' && isInteracted) {
+      addItemToInventory(resource);
+      setIsInteracted(false);
+    }
   };
 
   return (
-    <div className="place-of-interest" style={{ top: position.top, left: position.left }}>
-      {isPlanted ? (
-        <Timer duration={10} onComplete={handleHarvest} />
+    <div className="place-of-interest absolute p-4 bg-green-200 rounded shadow-lg" style={{ top: position.top, left: position.left }}>
+      {isInteracted && type === 'Plant' ? (
+        <Timer duration={10} onComplete={() => setIsInteracted(true)} />
       ) : (
-        <button onClick={() => setIsPlanted(true)}>Plant Seed</button>
+        <button onClick={handleInteraction} className="bg-green-500 text-white p-2 rounded">
+          {type === 'Plant' ? 'Plant Seed' : 'Harvest'}
+        </button>
       )}
     </div>
   );
